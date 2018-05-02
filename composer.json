@@ -1,0 +1,17 @@
+{
+    "name": "524233828/Wxapp",
+    "authors": [
+        {
+            "name": "JoseChan",
+            "email": "chenyu01@linghit.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wxapp\\": "src/"
+        }
+    }
+}
