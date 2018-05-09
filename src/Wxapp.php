@@ -97,6 +97,18 @@ class Wxapp
 
     }
 
+    public function sendCustomerMsg($data)
+    {
+        $url = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=".$this->getAccessToken();
+        $result = $this->curl($url,$data,"POST","JSON");
+        $data =json_decode($result,true);
+        if($data['errcode']==0){
+            return true;
+        }else{
+            return $data['errcode'];
+        }
+    }
+
     private function getSessionKey($code)
     {
         $url = "https://api.weixin.qq.com/sns/jscode2session?appid={$this->app_id}&secret={$this->app_secret}&js_code={$code}&grant_type=authorization_code";
