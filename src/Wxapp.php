@@ -184,7 +184,7 @@ class Wxapp
         //设置header
 //        curl_setopt($ch, CURLOPT_HEADER, FALSE);
         if($dataType=="JSON"){
-            $data = json_encode($data);
+            $data = json_encode($data, JSON_UNESCAPED_UNICODE);
             curl_setopt($ch, CURLOPT_HTTPHEADER, array(
                     'Content-Type: application/json',
                     'Content-Length: ' . strlen($data))
