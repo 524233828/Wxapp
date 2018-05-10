@@ -70,7 +70,7 @@ class Wxapp
             $data = json_decode($data,true);
             $access_token = $data['access_token'];
             $expire = isset($data['expires_in'])?$data['expires_in']:3600;
-            $this->redis->set($key,$access_token,$expire);
+            $this->redis->setex($key,$expire,$access_token);
         }
 
         return $access_token;
