@@ -62,7 +62,7 @@ class Wxapp
 
     public function getAccessToken()
     {
-        $key = "yd:wxapp:access_token";
+        $key = "yd:wxapp:access_token:".$this->app_id;
         if(!$access_token = $this->redis->get($key))
         {
             $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$this->app_id}&secret={$this->app_secret}";
