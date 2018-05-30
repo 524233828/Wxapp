@@ -112,7 +112,9 @@ class Wxapp
     public function uploadImage(\CURLFile $file)
     {
         $url = "https://api.weixin.qq.com/cgi-bin/media/upload?access_token=".$this->getAccessToken()."&type=image";
-        $result = $this->curl($url,$file,"POST");
+
+        $params['media'] = $file;
+        $result = $this->curl($url,$params,"POST");
         $data =json_decode($result,true);
 
         if(isset($data['errcode'])&&$data['errcode']!=0){
