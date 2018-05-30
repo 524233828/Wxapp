@@ -114,11 +114,12 @@ class Wxapp
         $url = "https://api.weixin.qq.com/cgi-bin/media/upload?access_token=".$this->getAccessToken()."&type=image";
         $result = $this->curl($url,$file,"POST");
         $data =json_decode($result,true);
-        if($data['errcode']==0){
-            return true;
-        }else{
+
+        if(isset($data['errcode'])&&$data['errcode']!=0){
             return $data['errcode'];
         }
+
+        return $data;
     }
 
     private function getSessionKey($code)
