@@ -109,6 +109,18 @@ class Wxapp
         }
     }
 
+    public function uploadImage(\CURLFile $file)
+    {
+        $url = "https://api.weixin.qq.com/cgi-bin/media/upload?access_token=".$this->getAccessToken()."&type=image";
+        $result = $this->curl($url,$file,"POST");
+        $data =json_decode($result,true);
+        if($data['errcode']==0){
+            return true;
+        }else{
+            return $data['errcode'];
+        }
+    }
+
     private function getSessionKey($code)
     {
         $url = "https://api.weixin.qq.com/sns/jscode2session?appid={$this->app_id}&secret={$this->app_secret}&js_code={$code}&grant_type=authorization_code";
